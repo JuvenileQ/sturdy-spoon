@@ -4,7 +4,7 @@
 <head>
     <!-- 页面meta -->
     <meta charset="utf-8">
-    <title>黑马面面</title>
+    <title>面面</title>
     <meta name="description" content="黑马面面">
     <meta name="keywords" content="黑马面面">
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
@@ -82,14 +82,15 @@
                         this.$refs['form'].validate((valid) => {
                             if (valid) {
                                 var formData = {
-                                    username: this.form.userName,
+                                    userName: this.form.userName,
                                     password: this.form.pwd
                                 };
                                 console.log(formData);
                                 axios.post(app_path + '/user/login.do', formData).then((response)=>{
                                     console.log(response);
                                     if (response.data.flag) {
-                                        sessionStorage.setItem("username", this.form.userName);
+                                        sessionStorage.setItem("userName", this.form.userName);
+
                                         window.location.href = "pages/index.html";
                                     } else {
                                         this.$message.error(response.data.message);

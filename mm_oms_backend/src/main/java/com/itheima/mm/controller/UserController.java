@@ -11,6 +11,7 @@ import com.itheima.mm.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -45,5 +46,14 @@ public class UserController extends BaseController {
 		} else {
 			printResult(response, new Result(false, "密码错误"));
 		}
+	}
+
+	@RequestMapping("/user/logout")
+	public void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+			session.invalidate();
+		}
+		printResult(response, new Result(true, "登出成功"));
 	}
 }
