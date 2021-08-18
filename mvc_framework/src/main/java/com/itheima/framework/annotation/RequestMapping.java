@@ -10,6 +10,6 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface HmRequestMapping {
+public @interface RequestMapping {
     String value();
 }

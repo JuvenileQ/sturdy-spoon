@@ -8,11 +8,11 @@ import java.lang.annotation.Target;
 /**
  * @author ：seanyang
  * @date ：Created in 2019/8/9
- * @description ：类注解，实例化类对象
+ * @description ：成员注解，注入bean实例
  * @version: 1.0
  */
-@Target(ElementType.TYPE)
+@Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface HmComponent {
-    String value() default "";
+public @interface Setter {
+    String value();
 }

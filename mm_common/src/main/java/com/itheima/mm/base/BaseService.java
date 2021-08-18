@@ -34,6 +34,8 @@ public class BaseService {
 		}
 	}
 	protected void closeSession(SqlSession sqlSession){
-		if(sqlSession!=null) sqlSession.close();
+		if(sqlSession!=null) {
+			sqlSession.close();
+		}
 	}
 }

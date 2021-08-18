@@ -32,7 +32,6 @@ public class HmDispatherServlet extends HttpServlet {
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 		// 截取我们需要的web资源的名称  即：去掉扩展名 和 web应用名称
 		String mappingPath = req.getServletPath();
 		if(mappingPath.endsWith(".do")){

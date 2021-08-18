@@ -7,7 +7,7 @@
     <groupId>com.itheima.mm</groupId>
     <artifactId>itheima_mm</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <modules>
         <module>mm_common</module>
         <module>mvc_framework</module>
@@ -17,7 +17,6 @@
         <junit.version>4.12</junit.version>
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
         <fastjson.version>1.2.47</fastjson.version>
-        <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
         <mybatis.version>3.4.5</mybatis.version>
         <log4j.version>1.2.17</log4j.version>
         <slf4j-api.version>1.7.25</slf4j-api.version>
@@ -32,6 +31,9 @@
         <okio.version>1.4.0</okio.version>
         <bcprov-jdk16.version>1.45</bcprov-jdk16.version>
         <jedis.version>2.9.0</jedis.version>
+        <maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>
+        <commons-beanutils.version>1.9.3</commons-beanutils.version>
+        <mysql-connector-java.version>8.0.26</mysql-connector-java.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -64,7 +66,7 @@
             <dependency>
                 <groupId>commons-beanutils</groupId>
                 <artifactId>commons-beanutils</artifactId>
-                <version>1.9.3</version>
+                <version>${commons-beanutils.version}</version>
             </dependency>
             <dependency>
                 <groupId>commons-fileupload</groupId>
@@ -135,11 +137,23 @@
         </dependencies>
     </dependencyManagement>
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <artifactId>tomcat7-maven-plugin</artifactId>
                     <groupId>org.apache.tomcat.maven</groupId>
+                    <artifactId>tomcat7-maven-plugin</artifactId>
                     <version>${tomcat7-maven-plugin.version}</version>
                 </plugin>
             </plugins>
