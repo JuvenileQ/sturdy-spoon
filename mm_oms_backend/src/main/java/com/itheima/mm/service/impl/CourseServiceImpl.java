@@ -43,4 +43,16 @@ public class CourseServiceImpl extends BaseService implements CourseService  {
 		closeSession(sqlSession);
 		return new PageResult(totalCount, courses);
 	}
+
+	@Override
+	public void updateCourse(Course course) {
+		SqlSession sqlSession = getSession();
+		CourseDao courseDao = getDao(sqlSession, CourseDao.class);
+
+		Integer result = courseDao.updateCourse(course);
+		if (result == 0) {
+			throw new MmDaoException("更新失败");
+		}
+		commitAndCloseSession(sqlSession);
+	}
 }

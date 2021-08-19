@@ -61,7 +61,7 @@
                 </el-table-column>
                 <el-table-column label="创建日期" align="center">
                     <template slot-scope="scope">
-                        <span>{{ scope.row.createDate | dateTransform }}</span>
+                        <span>{{ scope.row.createDate || dateTransform }}</span>
                     </template>
                 </el-table-column>
                 <el-table-column label="前台是否显示" align="center">
@@ -275,7 +275,7 @@
                     }
                 };
                 axios.get(app_path + "/course/getCourseList.do",params).then((response)=>{
-                    console.log("学科分页列表返回数据：" + response);
+                    console.log("学科分页列表返回数据1：" ,response);
                     this.pagination.total = response.data.result.total;
                     this.items = response.data.result.rows;
                     this.loading = true;
@@ -359,10 +359,17 @@
                 this.$refs['form'].validate((valid) => {
                     if (valid) {
                         let params = this.form;
-                        console.log("学科更新请求参数：");
-                        console.log(params);
-                        this.$message.success("更新成功");
-                        this.dialogFormVisible = false;
+                        console.log("学科更新请求参数：", params);
+                        axios.post(app_path + "/course/update.do", params).then((response)=>{
+                            if (response.data.flag) {
+                                this.$message.success("更新成功");
+                                this.getList();
+                            } else {
+                                this.$message.error("更新失败，请联系管理员");
+                            }
+                            this.dialogFormVisible = false;
+                        });
+
                     }
                 });
             },

@@ -12,4 +12,7 @@ public interface CourseService {
 	void addCourse(Course course);
 
 	PageResult getCourseList(QueryPageBean pageBean);
+
+	void updateCourse(Course course);
+
 }

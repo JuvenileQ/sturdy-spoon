@@ -2,6 +2,7 @@ package com.itheima.mm.dao;
 
 import com.itheima.mm.entity.QueryPageBean;
 import com.itheima.mm.pojo.Course;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -15,4 +16,6 @@ public interface CourseDao {
 	List<Course> getCourseList(QueryPageBean pageBean);
 
 	Long countList(QueryPageBean pageBean);
+
+	Integer updateCourse(Course course);
 }

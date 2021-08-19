@@ -53,7 +53,7 @@ public class CourseController extends BaseController {
 	@RequestMapping("/course/getCourseList")
 	public void getCourseList(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		QueryPageBean pageBean = parseJSON2Object(request, QueryPageBean.class);
-		if (pageBean==null) {
+		if (pageBean == null) {
 			pageBean = new QueryPageBean();
 			pageBean.setCurrentPage(1);
 			pageBean.setPageSize(10);
@@ -61,5 +61,12 @@ public class CourseController extends BaseController {
 
 		PageResult pageResult = courseService.getCourseList(pageBean);
 		printResult(response, new Result(true, "获取学科列表成功", pageResult));
+	}
+
+	@RequestMapping("/course/update")
+	public void updateCourse(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		Course course = parseJSON2Object(request, Course.class);
+		courseService.updateCourse(course);
+		printResult(response, new Result(true, "更新学科成功"));
 	}
 }

@@ -18,6 +18,14 @@
         values (#{name}, #{createDate}, #{isShow}, #{userId});
     </insert>
 
+    <!--更新科目-->
+    <update id="updateCourse">
+        update t_course
+        set name   = #{name},
+            is_show=#{isShow}
+        where id = #{id};
+    </update>
+
     <!--分页列表-->
     <select id="getCourseList" resultType="com.itheima.mm.pojo.Course">
         select tc.id,
@@ -25,7 +33,7 @@
         create_date createDate,
         is_show isShow,
         (select count(*) from t_catalog where course_id = tc.id) catalogQty,
-        (select * from t_user where id=tc.user_id) creator,
+        (select username from t_user where id=tc.user_id) creator,
         (select count(*) from t_question where catalog_id= tc.id) questionQty,
         (select count(*) from t_tag where course_id=tc.id) tagQty
         from t_course tc
