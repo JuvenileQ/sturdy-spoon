@@ -1,3 +1,5 @@
+<script type="text/javascript" src='./world.js'></script>
+
 <script>
 eval(z='p=""        /* ,.oq#+     ,._, */;for(y in n="zw24l6k\
 4e3t4jnt4qj24xh2 x/* =<,m#F^    A W###q. */42kty24wrt413n243n\
